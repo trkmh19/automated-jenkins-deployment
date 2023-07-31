@@ -1,0 +1,7 @@
+- name: Setup jenkins
+  hosts: jenkins
+  gather_facts: true
+  roles:
+    - common
+    - docker
+    - jenkins
