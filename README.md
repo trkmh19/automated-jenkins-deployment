@@ -16,7 +16,6 @@ This project provides an automated and reproducible solution for deploying Jenki
   - [Terraform](#terraform)
   - [Ansible](#ansible)
   - [Accessing Jenkins](#accessing-jenkins)
-- [Contribution](#contribution)
 
 # Prerequisites
 
@@ -59,13 +58,3 @@ This project provides an automated and reproducible solution for deploying Jenki
 - To complete the setup, SSH to the VM and retrieve the initial admin password from the logs of the container: `docker logs jenkins-dood`.
 - Paste the initial admin password in the Jenkins web interface.
 - Create a new user and start using Jenkins.
-
-# Contribution
-
-We welcome contributions to this project! To contribute, follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature/fix: `git checkout -b your-feature-branch`.
-3. Make your changes and commit them: `git commit -m "Add your message here"`.
-4. Push your changes to your fork: `git push origin your-feature-branch`.
-5. Open a pull request against the main repository.
