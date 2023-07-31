@@ -1,0 +1,48 @@
+---
+#tasks file for jenkins
+
+- name: ensure jenkins dockerfile is present in the host
+  copy:
+    src: jenkins.dockerfile
+    dest: "{{ ansible_user_dir }}/jenkins.dockerfile"
+    mode: 0644
+
+- name: ensure jenkins docker image is built
+  docker_image:
+    source: build
+    build:
+      path: "{{ ansible_user_dir }}"
+      pull: yes
+      rm: yes
+      dockerfile: jenkins.dockerfile
+    name: jenkins-dood
+    state: present
+
+- name: ensure jenkins network is created
+  docker_network:
+    name: jenkins
+    state: present
+
+- name: ensure jenkins volume is created
+  file:
+    path: "{{ ansible_user_dir }}/jenkins_home"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
+
+- name: ensure jenkins container is running in the host
+  docker_container:
+    name: jenkins-dood
+    image: jenkins-dood
+    state: started
+    restart_policy: always
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - "{{ ansible_user_dir }}/jenkins_home:/var/jenkins_home"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks_cli_compatible: yes
+    networks:
+      - name: jenkins

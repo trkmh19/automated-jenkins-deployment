@@ -1,0 +1,16 @@
+---
+# tasks file for common
+- name: ensure apt cache is updated
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: ensure common tools are installed
+  become: yes
+  apt:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+      - pip
+    state: present
