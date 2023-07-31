@@ -69,5 +69,3 @@ We welcome contributions to this project! To contribute, follow these steps:
 3. Make your changes and commit them: `git commit -m "Add your message here"`.
 4. Push your changes to your fork: `git push origin your-feature-branch`.
 5. Open a pull request against the main repository.
-
-Please ensure your contributions adhere to the coding standards and conventions used in the project.
